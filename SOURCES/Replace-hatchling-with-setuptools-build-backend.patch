@@ -1,0 +1,37 @@
+From 6b3510429ea041f0ab516bfbf78a550859b7f50e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Hrn=C4=8Diar?= <thrnciar@redhat.com>
+Date: Mon, 22 Sep 2025 14:25:42 +0200
+Subject: [PATCH] Replace hatchling with setuptools build backend
+
+---
+ pyproject.toml | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 45538a6..d73b358 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,8 +1,8 @@
+ # This file is protected via CODEOWNERS
+ 
+ [build-system]
+-requires = ["hatchling>=1.27.0,<2", "hatch-vcs>=0.4.0,<0.6.0", "setuptools-scm>=8,<10"]
+-build-backend = "hatchling.build"
++build-backend = "setuptools.build_meta"
++requires = ["setuptools>=77", "setuptools_scm"]
+ 
+ [project]
+ name = "urllib3"
+@@ -132,6 +132,9 @@ include = [
+   "/LICENSE.txt",
+ ]
+ 
++[tool.setuptools_scm]
++version_file = "src/urllib3/_version.py"
++
+ [tool.pytest.ini_options]
+ xfail_strict = true
+ python_classes = ["Test", "*TestCase"]
+-- 
+2.52.0
+
